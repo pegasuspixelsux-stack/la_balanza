@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# runtime menu store (seeded from lib/menu-seed.ts)
+/data/menu.json

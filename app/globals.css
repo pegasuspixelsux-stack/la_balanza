@@ -1,26 +1,98 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* ---------------------------------------------------------------- palette
+     Forest green (brand), cream (text/trim), neon green (accents/CTA),
+     warm amber (secondary highlights), charcoal (structure). */
+  --color-forest: #2c5e3b;
+  --color-forest-deep: #1f4a2d;
+  --color-forest-light: #3d7a51;
+
+  --color-cream: #f4f4f0;
+  --color-neon: #00ff66;
+  --color-neon-deep: #00d957;
+  --color-warm: #ffaa33;
+
+  /* Legacy token names kept as aliases so existing markup remaps cleanly:
+     - "terracotta" is now the neon-green accent
+     - "pine" is now forest green
+     - "bone" is now cream */
+  --color-terracotta: var(--color-neon);
+  --color-terracotta-deep: var(--color-neon-deep);
+  --color-pine: var(--color-forest);
+  --color-pine-light: var(--color-forest-light);
+  --color-bone: var(--color-cream);
+  --color-ash: #9aa89b;
+
+  /* Green-tinted charcoal ramp — overrides Tailwind's default `stone` scale
+     so every stone-* utility already in the markup shifts to the new base. */
+  --color-stone-950: #121712;
+  --color-stone-900: #18201a;
+  --color-stone-800: #29332b;
+  --color-stone-700: #3b473d;
+  --color-stone-600: #556355;
+  --color-stone-500: #7c8a7c;
+  --color-stone-400: #9aa89a;
+  --color-stone-300: #c3ccc2;
+  --color-stone-200: #dee3dc;
+  --color-stone-100: #eef1ec;
+
+  /* Warm amber highlights (stars, PedidosYa, avisos). */
+  --color-amber-300: #ffc266;
+  --color-amber-400: #ffb84d;
+  --color-amber-500: #ffaa33;
+  --color-amber-600: #f59a1f;
+
+  /* Page container — max content width across every section */
+  --container-page: 90rem; /* 1440px */
+
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-script: var(--font-pacifico), "Brush Script MT", cursive;
+  --font-heading: var(--font-montserrat), var(--font-geist-sans), ui-sans-serif, sans-serif;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    background-color: var(--color-stone-950);
+    color: var(--color-stone-300);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Anchor targets clear the fixed header */
+  section[id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  ::selection {
+    background-color: var(--color-neon);
+    color: var(--color-forest-deep);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-neon);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
