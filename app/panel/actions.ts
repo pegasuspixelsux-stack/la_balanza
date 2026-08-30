@@ -21,11 +21,11 @@ function fail(error: string): ActionResult {
   return { ok: false, error };
 }
 
-/** Friendly message when a write fails (e.g. read-only FS with no Redis). */
+/** Friendly message when a write fails (e.g. a fully read-only filesystem). */
 function storageError(error: unknown): string {
   const msg = error instanceof Error ? error.message : String(error);
-  if (/EROFS|read-only|ENOENT|EACCES|permission denied/i.test(msg)) {
-    return "El almacenamiento es de solo lectura en este entorno. Conectá Upstash Redis (Vercel → Storage) para poder guardar cambios.";
+  if (/EROFS|read-only|EACCES|permission denied/i.test(msg)) {
+    return "Este entorno no permite escribir. Editá y desplegá con data/menu.json, o usá Exportar.";
   }
   return msg || "No se pudo guardar.";
 }
@@ -335,6 +335,81 @@ export async function importMenuItems(
     );
     revalidateEverything();
     return { ok: true, itemsCreated, categoriesCreated };
+  } catch (error) {
+    return { ok: false, error: storageError(error) };
+  }
+}
+
+/* --------------------------------------------------------- export / import JSON */
+
+const categorySchemaJson = z.object({
+  id: z.string().min(1),
+  name: z.string().trim().min(1),
+  published: z.boolean(),
+  order: z.number(),
+});
+
+const itemSchemaJson = z.object({
+  id: z.string().min(1),
+  name: z.string().trim().min(1),
+  description: z.string().default(""),
+  price: z.coerce.number().min(0),
+  categoryId: z.string().min(1),
+  featured: z.boolean().default(false),
+  published: z.boolean().default(true),
+  order: z.number(),
+});
+
+const menuDataSchema = z.object({
+  settings: z.record(z.string(), z.unknown()).optional(),
+  categories: z.array(categorySchemaJson),
+  items: z.array(itemSchemaJson),
+});
+
+export async function exportMenu(): Promise<string> {
+  if (!(await isAuthenticated())) return "";
+  return store.exportMenu();
+}
+
+export async function importMenuJson(jsonText: string): Promise<ImportResult> {
+  if (!(await isAuthenticated())) {
+    return { ok: false, error: "Sesión expirada. Volvé a entrar." };
+  }
+
+  let raw: unknown;
+  try {
+    raw = JSON.parse(jsonText);
+  } catch {
+    return { ok: false, error: "El archivo no es JSON válido." };
+  }
+
+  const parsed = menuDataSchema.safeParse(raw);
+  if (!parsed.success) {
+    return {
+      ok: false,
+      error:
+        "El JSON no tiene la estructura esperada (settings, categories, items). " +
+        (parsed.error.issues[0]?.message ?? ""),
+    };
+  }
+
+  const catIds = new Set(parsed.data.categories.map((c) => c.id));
+  const orphans = parsed.data.items.filter((i) => !catIds.has(i.categoryId));
+  if (orphans.length > 0) {
+    return {
+      ok: false,
+      error: `${orphans.length} plato(s) apuntan a una categoría inexistente (ej. "${orphans[0].name}").`,
+    };
+  }
+
+  try {
+    await store.replaceMenu(parsed.data as unknown as Parameters<typeof store.replaceMenu>[0]);
+    revalidateEverything();
+    return {
+      ok: true,
+      itemsCreated: parsed.data.items.length,
+      categoriesCreated: parsed.data.categories.length,
+    };
   } catch (error) {
     return { ok: false, error: storageError(error) };
   }

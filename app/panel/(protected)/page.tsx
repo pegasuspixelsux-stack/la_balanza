@@ -1,4 +1,5 @@
-import { getMenu } from "@/lib/menu-store";
+import { Info } from "lucide-react";
+import { getMenu, storageIsDurable } from "@/lib/menu-store";
 import { Dashboard } from "@/components/panel/dashboard";
 
 export const dynamic = "force-dynamic";
@@ -26,6 +27,19 @@ export default async function PanelPage() {
       <p className="mt-1 text-sm text-stone-400">
         Los cambios se publican al instante en la carta y en la página principal.
       </p>
+
+      {!storageIsDurable ? (
+        <div className="mt-4 flex items-start gap-2.5 rounded-xl border border-amber-500/30 bg-amber-500/10 p-3.5 text-sm text-stone-200">
+          <Info className="mt-0.5 h-4 w-4 shrink-0 text-amber-400" />
+          <p>
+            En este entorno (Vercel) los cambios son temporales: se ven al
+            instante pero se pierden al reiniciar el servidor. Para dejarlos
+            fijos: <strong>Importar / exportar → Exportar carta (.json)</strong>,
+            reemplazá <code className="text-stone-300">data/menu.json</code> en el
+            repo y volvé a desplegar.
+          </p>
+        </div>
+      ) : null}
 
       <dl className="mt-6 grid grid-cols-3 gap-3">
         {stats.map((stat) => (

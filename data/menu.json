@@ -1,0 +1,1054 @@
+{
+  "settings": {
+    "phone": "42 25 39 09 / 098 253 909",
+    "whatsapp": "59898253909",
+    "email": "contacto@parrilladalabalanza.com.uy",
+    "hours": [
+      {
+        "days": "Martes a viernes",
+        "time": "11:30 – 23:30"
+      },
+      {
+        "days": "Sábados y domingos",
+        "time": "11:30 – 24:00"
+      },
+      {
+        "days": "Lunes",
+        "time": "Cerrado"
+      }
+    ],
+    "specialClosings": []
+  },
+  "categories": [
+    {
+      "id": "cat-parrilla",
+      "name": "Parrilla",
+      "published": true,
+      "order": 1
+    },
+    {
+      "id": "cat-minutas",
+      "name": "Minutas",
+      "published": true,
+      "order": 2
+    },
+    {
+      "id": "cat-pastas",
+      "name": "Pastas caseras",
+      "published": true,
+      "order": 3
+    },
+    {
+      "id": "cat-guarniciones",
+      "name": "Guarniciones",
+      "published": true,
+      "order": 4
+    },
+    {
+      "id": "cat-postres",
+      "name": "Postres",
+      "published": true,
+      "order": 5
+    },
+    {
+      "id": "9618b3e3-8ac9-4845-bcef-63970ad4320a",
+      "name": "Entradas",
+      "published": true,
+      "order": 6
+    },
+    {
+      "id": "315890ba-7a5a-469a-9f99-233d31bf1fde",
+      "name": "Pescados y Mariscos",
+      "published": true,
+      "order": 7
+    },
+    {
+      "id": "3b1b2aaf-393c-4ca3-8540-fbdc5cafcf97",
+      "name": "Chivitería",
+      "published": true,
+      "order": 8
+    },
+    {
+      "id": "69f43107-ff8c-4f0c-aa09-8947210c2b71",
+      "name": "Cocina",
+      "published": true,
+      "order": 9
+    },
+    {
+      "id": "f4dfdc1b-8ccf-40bf-8ba8-2f78caed230a",
+      "name": "Menú Infantil",
+      "published": true,
+      "order": 10
+    },
+    {
+      "id": "e9f1ecea-f4d3-44d1-b71a-4a9027da857a",
+      "name": "Bebidas sin Alcohol",
+      "published": true,
+      "order": 11
+    },
+    {
+      "id": "26e6378e-2087-4770-bdd1-8a55544ca14a",
+      "name": "Cervezas y Tragos",
+      "published": true,
+      "order": 12
+    },
+    {
+      "id": "08be6e8f-f7f9-43a8-99d4-9410696eab6d",
+      "name": "Vinos",
+      "published": true,
+      "order": 13
+    }
+  ],
+  "items": [
+    {
+      "id": "item-asado-tira",
+      "name": "Asado de tira",
+      "description": "500 grs. aprox. de asado tierno al fuego de leña, con guarnición.",
+      "price": 790,
+      "categoryId": "cat-parrilla",
+      "featured": true,
+      "published": true,
+      "order": 1
+    },
+    {
+      "id": "item-entrana",
+      "name": "Entraña",
+      "description": "Corte seleccionado a las brasas, jugoso, con guarnición.",
+      "price": 890,
+      "categoryId": "cat-parrilla",
+      "featured": true,
+      "published": true,
+      "order": 2
+    },
+    {
+      "id": "item-vacio",
+      "name": "Vacío",
+      "description": "Clásico de la parrilla, cocción lenta. Con guarnición.",
+      "price": 760,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 3
+    },
+    {
+      "id": "item-pollo",
+      "name": "Medio pollo a la parrilla",
+      "description": "Marinado de la casa, dorado al fuego. Con guarnición.",
+      "price": 620,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 4
+    },
+    {
+      "id": "item-chivito",
+      "name": "Chivito al plato",
+      "description": "Lomo, jamón, queso, panceta, huevo, con papas fritas y ensalada rusa.",
+      "price": 850,
+      "categoryId": "cat-minutas",
+      "featured": true,
+      "published": true,
+      "order": 5
+    },
+    {
+      "id": "item-milanesa",
+      "name": "Milanesa napolitana con papas fritas",
+      "description": "Milanesa de carne con salsa, jamón y muzzarella gratinada.",
+      "price": 690,
+      "categoryId": "cat-minutas",
+      "featured": false,
+      "published": true,
+      "order": 6
+    },
+    {
+      "id": "item-sorrentinos",
+      "name": "Sorrentinos de jamón y queso",
+      "description": "Caseros, con salsa a elección: fileto, crema o bolognesa.",
+      "price": 480,
+      "categoryId": "cat-pastas",
+      "featured": true,
+      "published": true,
+      "order": 7
+    },
+    {
+      "id": "item-canelones",
+      "name": "Canelones de verdura y ricota",
+      "description": "Masa casera, gratinados al horno. Opción vegetariana.",
+      "price": 440,
+      "categoryId": "cat-pastas",
+      "featured": false,
+      "published": true,
+      "order": 8
+    },
+    {
+      "id": "item-ravioles",
+      "name": "Ravioles de la casa",
+      "description": "Con salsa a elección. Consultá por la opción sin TACC.",
+      "price": 420,
+      "categoryId": "cat-pastas",
+      "featured": false,
+      "published": true,
+      "order": 9
+    },
+    {
+      "id": "item-papas",
+      "name": "Papas fritas",
+      "description": "Porción abundante, recién hechas.",
+      "price": 260,
+      "categoryId": "cat-guarniciones",
+      "featured": false,
+      "published": true,
+      "order": 10
+    },
+    {
+      "id": "item-ensalada",
+      "name": "Ensalada de la casa",
+      "description": "Verdes de estación, tomate, palmitos y huevo.",
+      "price": 320,
+      "categoryId": "cat-guarniciones",
+      "featured": false,
+      "published": true,
+      "order": 11
+    },
+    {
+      "id": "item-boniato",
+      "name": "Boniato glaseado",
+      "description": "Al horno, con un toque de azúcar rubia.",
+      "price": 240,
+      "categoryId": "cat-guarniciones",
+      "featured": false,
+      "published": true,
+      "order": 12
+    },
+    {
+      "id": "item-flan",
+      "name": "Flan casero con dulce de leche",
+      "description": "Receta de siempre, con abundante dulce de leche.",
+      "price": 220,
+      "categoryId": "cat-postres",
+      "featured": true,
+      "published": true,
+      "order": 13
+    },
+    {
+      "id": "item-panqueque",
+      "name": "Panqueque de dulce de leche",
+      "description": "Tibio, con azúcar quemada.",
+      "price": 230,
+      "categoryId": "cat-postres",
+      "featured": false,
+      "published": true,
+      "order": 14
+    },
+    {
+      "id": "c6751324-89fb-4c54-99d4-c862e368c804",
+      "name": "Provolone",
+      "description": "Queso provolone fundido a la parrilla con toque de orégano",
+      "price": 260,
+      "categoryId": "9618b3e3-8ac9-4845-bcef-63970ad4320a",
+      "featured": false,
+      "published": true,
+      "order": 15
+    },
+    {
+      "id": "8279b74d-e4c1-4774-bd82-bf4da2ca58ec",
+      "name": "Provolone al Gusto",
+      "description": "Provolone fundido con opción de caprese o panceta y morrones",
+      "price": 320,
+      "categoryId": "9618b3e3-8ac9-4845-bcef-63970ad4320a",
+      "featured": false,
+      "published": true,
+      "order": 16
+    },
+    {
+      "id": "b0f9dda6-a5dd-4605-a69e-d3edeacd636d",
+      "name": "Papas",
+      "description": "Porción de papas doradas y crujientes",
+      "price": 400,
+      "categoryId": "9618b3e3-8ac9-4845-bcef-63970ad4320a",
+      "featured": false,
+      "published": true,
+      "order": 17
+    },
+    {
+      "id": "11b67b31-e3e7-4de7-b18f-2ae8860f7923",
+      "name": "Miniaturas",
+      "description": "Surtido crujiente de rabas, milanesas y merluza",
+      "price": 430,
+      "categoryId": "9618b3e3-8ac9-4845-bcef-63970ad4320a",
+      "featured": false,
+      "published": true,
+      "order": 18
+    },
+    {
+      "id": "1410d8c8-04d4-4fde-ab6b-03ae26d7211f",
+      "name": "Tabla de Mariscos",
+      "description": "Selección de rabas, miniaturas, camarones y mejillones",
+      "price": 1100,
+      "categoryId": "9618b3e3-8ac9-4845-bcef-63970ad4320a",
+      "featured": false,
+      "published": true,
+      "order": 19
+    },
+    {
+      "id": "af7239f6-5fa3-499b-b23b-98ccca799c73",
+      "name": "Filete de Merluza a la Plancha",
+      "description": "Filete tierno de merluza cocinado a la plancha",
+      "price": 425,
+      "categoryId": "315890ba-7a5a-469a-9f99-233d31bf1fde",
+      "featured": false,
+      "published": true,
+      "order": 20
+    },
+    {
+      "id": "e48990e5-8f3f-4cad-87e2-a34065732c23",
+      "name": "Milanesa de Merluza",
+      "description": "Milanesa de merluza crujiente con guarnición",
+      "price": 450,
+      "categoryId": "315890ba-7a5a-469a-9f99-233d31bf1fde",
+      "featured": false,
+      "published": true,
+      "order": 21
+    },
+    {
+      "id": "b2fb260f-0509-4afc-9593-0879cac3908c",
+      "name": "Salmón Grille",
+      "description": "Filete de salmón fresco a las brasas",
+      "price": 795,
+      "categoryId": "315890ba-7a5a-469a-9f99-233d31bf1fde",
+      "featured": false,
+      "published": true,
+      "order": 22
+    },
+    {
+      "id": "14162d97-487a-4448-90ec-69f489065402",
+      "name": "Salsa para Pescados",
+      "description": "Salsa a elección: champignon, vinos y puerro, o camarón",
+      "price": 300,
+      "categoryId": "315890ba-7a5a-469a-9f99-233d31bf1fde",
+      "featured": false,
+      "published": true,
+      "order": 23
+    },
+    {
+      "id": "666e6322-096c-4772-acd6-0737942a7eec",
+      "name": "Paella para Dos",
+      "description": "Paella tradicional con frutos del mar",
+      "price": 1400,
+      "categoryId": "315890ba-7a5a-469a-9f99-233d31bf1fde",
+      "featured": false,
+      "published": true,
+      "order": 24
+    },
+    {
+      "id": "b9621095-285a-40a5-b242-e30c5c4c7442",
+      "name": "Risotto de Salmón y Camarón",
+      "description": "Risotto cremoso con salmón y camarones frescos",
+      "price": 700,
+      "categoryId": "315890ba-7a5a-469a-9f99-233d31bf1fde",
+      "featured": false,
+      "published": true,
+      "order": 25
+    },
+    {
+      "id": "334cff64-3485-4b2e-a333-381435edafa9",
+      "name": "Hamburguesa al Pan",
+      "description": "Clásica con tomate, jamón, queso, panceta, huevo, mayonesa y papas",
+      "price": 270,
+      "categoryId": "3b1b2aaf-393c-4ca3-8540-fbdc5cafcf97",
+      "featured": false,
+      "published": true,
+      "order": 26
+    },
+    {
+      "id": "fa3191bf-41a7-4150-9676-cac8a85a98be",
+      "name": "Hamburguesa Doble",
+      "description": "Doble carne, jamón, huevo, panceta, cheddar, tomate y mayonesa con papas",
+      "price": 440,
+      "categoryId": "3b1b2aaf-393c-4ca3-8540-fbdc5cafcf97",
+      "featured": false,
+      "published": true,
+      "order": 27
+    },
+    {
+      "id": "62ae18be-d333-429c-b01d-d6b7be8017b4",
+      "name": "Chivito Canadiense",
+      "description": "Carne o pollo con tomate, jamón, queso, panceta, huevo y papas",
+      "price": 485,
+      "categoryId": "3b1b2aaf-393c-4ca3-8540-fbdc5cafcf97",
+      "featured": false,
+      "published": true,
+      "order": 28
+    },
+    {
+      "id": "eb8e1116-e67f-4a08-a971-2288fe1d9879",
+      "name": "Chivito al Plato (Uno)",
+      "description": "Carne o pollo con ensalada rusa, fritas, mixta, huevos y fiambres",
+      "price": 990,
+      "categoryId": "3b1b2aaf-393c-4ca3-8540-fbdc5cafcf97",
+      "featured": false,
+      "published": true,
+      "order": 29
+    },
+    {
+      "id": "50eebcc1-0b21-4d60-9a4f-720bf7da6229",
+      "name": "Chivito al Plato (Dos)",
+      "description": "Abundante plato para dos con carnes, ensaladas y guarniciones completas",
+      "price": 990,
+      "categoryId": "3b1b2aaf-393c-4ca3-8540-fbdc5cafcf97",
+      "featured": false,
+      "published": true,
+      "order": 30
+    },
+    {
+      "id": "e00478c5-a036-4ed4-b6e6-b005ef845f99",
+      "name": "Milanesa Completa al Pan",
+      "description": "Sándwich de milanesa con papas fritas",
+      "price": 450,
+      "categoryId": "3b1b2aaf-393c-4ca3-8540-fbdc5cafcf97",
+      "featured": false,
+      "published": true,
+      "order": 31
+    },
+    {
+      "id": "5231ba1b-f620-41fa-b8b9-25dcb84298c7",
+      "name": "Milanesa de Carne o Pollo",
+      "description": "Milanesa tradicional servida con guarnición",
+      "price": 420,
+      "categoryId": "3b1b2aaf-393c-4ca3-8540-fbdc5cafcf97",
+      "featured": false,
+      "published": true,
+      "order": 32
+    },
+    {
+      "id": "fdf6beb6-508e-47bf-bdd6-5e28428edbc4",
+      "name": "Milanesa Napolitana",
+      "description": "Con jamón, queso y salsa de tomate, con guarnición",
+      "price": 540,
+      "categoryId": "3b1b2aaf-393c-4ca3-8540-fbdc5cafcf97",
+      "featured": false,
+      "published": true,
+      "order": 33
+    },
+    {
+      "id": "09f3e876-f51a-40cb-94a5-050fd5fc4fdc",
+      "name": "Milanesa Napolitana Cheddar",
+      "description": "Cheddar fundido, panceta, dos huevos fritos y papas",
+      "price": 610,
+      "categoryId": "3b1b2aaf-393c-4ca3-8540-fbdc5cafcf97",
+      "featured": false,
+      "published": true,
+      "order": 34
+    },
+    {
+      "id": "999f7605-0cf9-4394-96c4-e6383953172d",
+      "name": "Milanesa Napolitana Classic (Dos)",
+      "description": "Para compartir: jamón, queso, salsa, huevos fritos, ensaladas y papas",
+      "price": 980,
+      "categoryId": "3b1b2aaf-393c-4ca3-8540-fbdc5cafcf97",
+      "featured": false,
+      "published": true,
+      "order": 35
+    },
+    {
+      "id": "e1ab27f3-da0c-4e97-b089-ec5cb6c5d8ae",
+      "name": "Tortugón de Carne o Pollo",
+      "description": "Pan especial con carne o pollo, jamón, queso, panceta, huevo y papas",
+      "price": 700,
+      "categoryId": "3b1b2aaf-393c-4ca3-8540-fbdc5cafcf97",
+      "featured": false,
+      "published": true,
+      "order": 36
+    },
+    {
+      "id": "0533b3da-8d7e-492d-84a5-e550d21d90b6",
+      "name": "Costilla de Cerdo con Fritas",
+      "description": "Tierna costilla de cerdo asada con papas fritas",
+      "price": 450,
+      "categoryId": "3b1b2aaf-393c-4ca3-8540-fbdc5cafcf97",
+      "featured": false,
+      "published": true,
+      "order": 37
+    },
+    {
+      "id": "3ba8bdd5-7ccf-4a63-bba0-a0b20d8faa63",
+      "name": "Costilla de Cerdo Riojana",
+      "description": "Con cebolla, morrón, panceta, huevos fritos y papas fritas",
+      "price": 500,
+      "categoryId": "3b1b2aaf-393c-4ca3-8540-fbdc5cafcf97",
+      "featured": false,
+      "published": true,
+      "order": 38
+    },
+    {
+      "id": "270a4cd5-9c50-47e7-81e0-911e8de27ce6",
+      "name": "Lomo / Medallón",
+      "description": "Corte tierno de lomo asado a las brasas de leña",
+      "price": 660,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 39
+    },
+    {
+      "id": "00afaff4-05d6-450d-9fe5-afd4326f51db",
+      "name": "Entraña a la Vrusca",
+      "description": "Entraña jugosa acompañada de papas rústicas",
+      "price": 760,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 40
+    },
+    {
+      "id": "e600ebfa-6579-4ba9-a3f8-29662c41824b",
+      "name": "Entraña",
+      "description": "Corte clásico de entraña sin guarnición",
+      "price": 700,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 41
+    },
+    {
+      "id": "32e76e40-9a44-4c9f-a07a-71d251d8aa88",
+      "name": "Puyón de Vacas",
+      "description": "Bife ancho jugoso cocinado a fuego vivo",
+      "price": 640,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 42
+    },
+    {
+      "id": "55494201-daf6-46fe-8eb5-6e5edc7be464",
+      "name": "Vacío a la Milanesa",
+      "description": "Vacío tierno preparado a la milanesa con papas rústicas",
+      "price": 640,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 43
+    },
+    {
+      "id": "b5874dbb-5abc-4fe7-aeac-76011ab9aa9c",
+      "name": "Picaña",
+      "description": "Corte tradicional con su capa de grasa noble y jugosidad única",
+      "price": 700,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 44
+    },
+    {
+      "id": "06dcf472-f6ee-40ff-a1ad-b945e022b6e5",
+      "name": "Ojo de Bife",
+      "description": "Corte central del bife ancho sin hueso, intenso y tierno",
+      "price": 700,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 45
+    },
+    {
+      "id": "4689369b-a6f2-4dc5-9cab-2bce443214ad",
+      "name": "Asado de Tira",
+      "description": "El clásico corte de asado cortado en tiras finas a la leña",
+      "price": 570,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 46
+    },
+    {
+      "id": "c46476d3-642d-4118-86a7-dea9ba19066d",
+      "name": "Matambrito de Cerdo",
+      "description": "Matambrito tierno de cerdo con guarnición",
+      "price": 700,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 47
+    },
+    {
+      "id": "a0c3edfb-f714-459c-8de0-3f5b03d8b5ae",
+      "name": "Matambrito a la Pizza",
+      "description": "Matambrito cubierto con salsa, mozzarella y papas rústicas",
+      "price": 710,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 48
+    },
+    {
+      "id": "8b46478f-aab4-42fd-8ec6-1bf80575f4f6",
+      "name": "Costillar de Novillo",
+      "description": "Costillar entero de novillo para dos personas",
+      "price": 880,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 49
+    },
+    {
+      "id": "490504bf-1879-4969-a3e4-8795e972d9c5",
+      "name": "Pollo, Muslo o Pechuga",
+      "description": "Pollo de campo asado a la parrilla con guarnición",
+      "price": 450,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 50
+    },
+    {
+      "id": "65298179-7bb9-45e9-8aa0-ccf51343343d",
+      "name": "Pamplona de Cerdo o Pollo",
+      "description": "Enrollado relleno de jamón, queso, panceta y morrón con fritas",
+      "price": 550,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 51
+    },
+    {
+      "id": "c01fb054-4ffc-407a-85c0-ad1c23e806a7",
+      "name": "Chorizo",
+      "description": "Chorizo artesanal de rueda a las brasas",
+      "price": 165,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 52
+    },
+    {
+      "id": "98d330d3-d769-49ec-95a4-3f148f18e3b7",
+      "name": "Morcilla",
+      "description": "Morcilla criolla suave y especiada",
+      "price": 165,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 53
+    },
+    {
+      "id": "64d72060-49d4-4802-be7f-60c30366a52e",
+      "name": "Chinchulín",
+      "description": "Chinchulines crujientes dorados a la brasa",
+      "price": 235,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 54
+    },
+    {
+      "id": "dc22f6f1-e75d-47e5-8084-b34137e842a2",
+      "name": "Riñón",
+      "description": "Riñones parrilleros al punto exacto",
+      "price": 205,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 55
+    },
+    {
+      "id": "994d0f4c-d832-49e5-b428-724bb12cd6ab",
+      "name": "Molleja",
+      "description": "Mollejas doradas y crujientes por fuera, tiernas por dentro",
+      "price": 340,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 56
+    },
+    {
+      "id": "0a7c5d53-9bfe-48a6-9a7e-addd68f03d7a",
+      "name": "Parrillada",
+      "description": "Surtido clásico de asado, vacío, pollo y chorizo",
+      "price": 1400,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 57
+    },
+    {
+      "id": "996af9c4-3d9c-45fc-8be5-c3fe6c6a280f",
+      "name": "Parrillón",
+      "description": "Gran parrillada con asado, pollo, chorizo, achuras, panceta y brasa",
+      "price": 1800,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 58
+    },
+    {
+      "id": "402848dd-c476-48cd-9463-fa1432f3b134",
+      "name": "Parrillón de la Casa",
+      "description": "Selección especial con asado, vacío, chorizo, chinchulín, molleja y morcilla",
+      "price": 1900,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 59
+    },
+    {
+      "id": "69bfe56a-a0a1-4da5-9e16-be3092068c22",
+      "name": "Parrillón Solo Cortes",
+      "description": "Exclusivo de carnes: vacío, entrecot, picaña, ojo de bife y costillar",
+      "price": 1500,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 60
+    },
+    {
+      "id": "ee319200-5066-4dcc-ab4c-61d5d9c07c62",
+      "name": "Papa Chiqueyton",
+      "description": "Guarnición especial de papas de la casa",
+      "price": 160,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 61
+    },
+    {
+      "id": "ec46deb7-c03a-4b4a-b346-0f2d14aa8ba3",
+      "name": "Dorado Glaseado",
+      "description": "Filete de pescado dorado con glaseado especial",
+      "price": 190,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 62
+    },
+    {
+      "id": "668d82b8-f209-4ca6-a700-d23a7b0217cf",
+      "name": "Morrón, Queso y Aceituna",
+      "description": "Morrón asado relleno de queso y aceitunas",
+      "price": 375,
+      "categoryId": "cat-parrilla",
+      "featured": false,
+      "published": true,
+      "order": 63
+    },
+    {
+      "id": "ca78f5cb-53f3-47e7-98ad-aab489ec3fb9",
+      "name": "Puré",
+      "description": "Puré artesanal a elección de calabaza o papa",
+      "price": 210,
+      "categoryId": "69f43107-ff8c-4f0c-aa09-8947210c2b71",
+      "featured": false,
+      "published": true,
+      "order": 64
+    },
+    {
+      "id": "81449df7-2705-4a54-bf9f-c6c65533d9d2",
+      "name": "Tortilla de Verduras",
+      "description": "Tortilla clásica casera de verduras frescas",
+      "price": 300,
+      "categoryId": "69f43107-ff8c-4f0c-aa09-8947210c2b71",
+      "featured": false,
+      "published": true,
+      "order": 65
+    },
+    {
+      "id": "80ee4faf-41eb-4563-919a-110954f3a4ac",
+      "name": "Tortilla a la Española",
+      "description": "Con papa, cebolla, morrón y pepperoni",
+      "price": 430,
+      "categoryId": "69f43107-ff8c-4f0c-aa09-8947210c2b71",
+      "featured": false,
+      "published": true,
+      "order": 66
+    },
+    {
+      "id": "f6ed7afc-4c6f-4dee-8097-23153905f2e9",
+      "name": "Omelette de Jamón y Queso",
+      "description": "Huevos batidos rellenos de jamón y queso fundido",
+      "price": 300,
+      "categoryId": "69f43107-ff8c-4f0c-aa09-8947210c2b71",
+      "featured": false,
+      "published": true,
+      "order": 67
+    },
+    {
+      "id": "43c5cb4b-acc0-4d17-af55-2d70660f01fd",
+      "name": "Papas Fritas",
+      "description": "Porción clásica de papas fritas doradas",
+      "price": 195,
+      "categoryId": "69f43107-ff8c-4f0c-aa09-8947210c2b71",
+      "featured": false,
+      "published": true,
+      "order": 68
+    },
+    {
+      "id": "5cbce022-68d2-4d90-8619-d3b278fb32c6",
+      "name": "Papas Fritas Cheddar y Panceta",
+      "description": "Bañadas en salsa cheddar caliente y trocitos de panceta crujiente",
+      "price": 380,
+      "categoryId": "69f43107-ff8c-4f0c-aa09-8947210c2b71",
+      "featured": false,
+      "published": true,
+      "order": 69
+    },
+    {
+      "id": "e698699b-8535-4dea-b649-6ffb8d14c8ad",
+      "name": "Papas Rústicas",
+      "description": "Papas cortadas en gajos con especias",
+      "price": 290,
+      "categoryId": "69f43107-ff8c-4f0c-aa09-8947210c2b71",
+      "featured": false,
+      "published": true,
+      "order": 70
+    },
+    {
+      "id": "c16ede1d-2617-42da-ad73-d9a780fd74cd",
+      "name": "Revuelto Gramajo",
+      "description": "Clásico rioplatense con papas pay, jamón, arvejas y huevo",
+      "price": 410,
+      "categoryId": "69f43107-ff8c-4f0c-aa09-8947210c2b71",
+      "featured": false,
+      "published": true,
+      "order": 71
+    },
+    {
+      "id": "4fd3687d-5d4c-49d5-94a7-507093eb7b85",
+      "name": "Nuggets con Puré o Panchos",
+      "description": "6 nuggets de pollo con puré o 2 panchos con papas fritas",
+      "price": 275,
+      "categoryId": "f4dfdc1b-8ccf-40bf-8ba8-2f78caed230a",
+      "featured": false,
+      "published": true,
+      "order": 72
+    },
+    {
+      "id": "fcce406b-3e10-4b6a-a655-f5b184a5d959",
+      "name": "Tallarines o Hamburguesas",
+      "description": "Tallarines con salsa o 2 mini hamburguesas con papas fritas",
+      "price": 275,
+      "categoryId": "f4dfdc1b-8ccf-40bf-8ba8-2f78caed230a",
+      "featured": false,
+      "published": true,
+      "order": 73
+    },
+    {
+      "id": "23b577f7-8606-4d52-a9f9-f78f6e76b957",
+      "name": "Limonadas (1 Lt)",
+      "description": "Limonada natural fresca con menta y jengibre",
+      "price": 390,
+      "categoryId": "e9f1ecea-f4d3-44d1-b71a-4a9027da857a",
+      "featured": false,
+      "published": true,
+      "order": 74
+    },
+    {
+      "id": "bba18e1c-eb20-45cb-96d5-31d9a44d6518",
+      "name": "Refresco Chico (500 ml)",
+      "description": "Bebida en botella de 500 ml",
+      "price": 130,
+      "categoryId": "e9f1ecea-f4d3-44d1-b71a-4a9027da857a",
+      "featured": false,
+      "published": true,
+      "order": 75
+    },
+    {
+      "id": "6154363f-92cb-49e7-9d5b-12bda5f72a20",
+      "name": "Agua Salus (1/2 Lt)",
+      "description": "Agua mineral natural o con gas",
+      "price": 129,
+      "categoryId": "e9f1ecea-f4d3-44d1-b71a-4a9027da857a",
+      "featured": false,
+      "published": true,
+      "order": 76
+    },
+    {
+      "id": "6d91197f-308d-441f-b3c3-81d848114010",
+      "name": "Agua Salus Saborizada",
+      "description": "Agua mineral con toque de sabor frutal",
+      "price": 130,
+      "categoryId": "e9f1ecea-f4d3-44d1-b71a-4a9027da857a",
+      "featured": false,
+      "published": true,
+      "order": 77
+    },
+    {
+      "id": "c4029908-5149-48a3-bd54-dc44c0fff6ba",
+      "name": "Jugo Naranja Natural Vaso",
+      "description": "Jugo exprimido de naranjas frescas",
+      "price": 180,
+      "categoryId": "e9f1ecea-f4d3-44d1-b71a-4a9027da857a",
+      "featured": false,
+      "published": true,
+      "order": 78
+    },
+    {
+      "id": "3449b8ef-0590-4388-b12c-e8096dc7363d",
+      "name": "Licuado Multifrutas (1/2 Lt)",
+      "description": "Licuado fresco de frutas de estación con leche o agua",
+      "price": 220,
+      "categoryId": "e9f1ecea-f4d3-44d1-b71a-4a9027da857a",
+      "featured": false,
+      "published": true,
+      "order": 79
+    },
+    {
+      "id": "c2e37e31-f710-4d82-a2cb-682ce78c2ed3",
+      "name": "Stella Artois (1 Lt)",
+      "description": "Cerveza rubia premium en botella grande",
+      "price": 329,
+      "categoryId": "26e6378e-2087-4770-bdd1-8a55544ca14a",
+      "featured": false,
+      "published": true,
+      "order": 80
+    },
+    {
+      "id": "9eb628ef-d8d1-4844-bff9-d620d2d769f5",
+      "name": "Stella Artois Negra (500 ml)",
+      "description": "Cerveza negra en presentación de medio litro",
+      "price": 200,
+      "categoryId": "26e6378e-2087-4770-bdd1-8a55544ca14a",
+      "featured": false,
+      "published": true,
+      "order": 81
+    },
+    {
+      "id": "7cdf2e32-47bf-456a-b59c-aff6120f13ca",
+      "name": "Patricia (1 Lt)",
+      "description": "Cerveza uruguaya tradicional de litro",
+      "price": 280,
+      "categoryId": "26e6378e-2087-4770-bdd1-8a55544ca14a",
+      "featured": false,
+      "published": true,
+      "order": 82
+    },
+    {
+      "id": "b7d7ef04-9c83-4ec5-853c-0b5d36a19123",
+      "name": "Zillertal (1 Lt)",
+      "description": "Cerveza rubia especial de alta calidad",
+      "price": 330,
+      "categoryId": "26e6378e-2087-4770-bdd1-8a55544ca14a",
+      "featured": false,
+      "published": true,
+      "order": 83
+    },
+    {
+      "id": "8b1cca03-7d33-43cc-8cad-579227fd07db",
+      "name": "Zillertal Lata IPA (500 ml)",
+      "description": "Cerveza artesanal IPA en lata",
+      "price": 200,
+      "categoryId": "26e6378e-2087-4770-bdd1-8a55544ca14a",
+      "featured": false,
+      "published": true,
+      "order": 84
+    },
+    {
+      "id": "7b4f74c5-798a-4ae8-9eeb-70ba46483c92",
+      "name": "Corona (330 ml)",
+      "description": "Cerveza importada rubia",
+      "price": 180,
+      "categoryId": "26e6378e-2087-4770-bdd1-8a55544ca14a",
+      "featured": false,
+      "published": true,
+      "order": 85
+    },
+    {
+      "id": "2a352174-18f4-416a-9e6d-3dae5de44e0f",
+      "name": "Cerveza Corona (3/4)",
+      "description": "Botella grande de cerveza Corona",
+      "price": 320,
+      "categoryId": "26e6378e-2087-4770-bdd1-8a55544ca14a",
+      "featured": false,
+      "published": true,
+      "order": 86
+    },
+    {
+      "id": "f02a6df3-fac1-4266-9748-8c8283e121f5",
+      "name": "Patagonia (3/4)",
+      "description": "Cerveza patagónica en botella",
+      "price": 360,
+      "categoryId": "26e6378e-2087-4770-bdd1-8a55544ca14a",
+      "featured": false,
+      "published": true,
+      "order": 87
+    },
+    {
+      "id": "054584fa-6d3b-4ced-800b-d88931419546",
+      "name": "Pilsen Chica",
+      "description": "Cerveza clásica uruguaya en porrón",
+      "price": 130,
+      "categoryId": "26e6378e-2087-4770-bdd1-8a55544ca14a",
+      "featured": false,
+      "published": true,
+      "order": 88
+    },
+    {
+      "id": "c9f3792f-dcc3-4193-a390-298a785bc0c9",
+      "name": "Pilsen Sin Alcohol",
+      "description": "Cerveza sin alcohol",
+      "price": 190,
+      "categoryId": "26e6378e-2087-4770-bdd1-8a55544ca14a",
+      "featured": false,
+      "published": true,
+      "order": 89
+    },
+    {
+      "id": "8f40259c-94cf-4329-b310-087d281d2fa2",
+      "name": "Clericó con Vino Brisas",
+      "description": "Clásico trago fresco con vino y frutas de estación",
+      "price": 440,
+      "categoryId": "26e6378e-2087-4770-bdd1-8a55544ca14a",
+      "featured": false,
+      "published": true,
+      "order": 90
+    },
+    {
+      "id": "7452a76b-236d-422f-bffd-54be8fbc6960",
+      "name": "Sangría con Vino Brisas",
+      "description": "Refrescante sangría con vino tinto y frutas",
+      "price": 350,
+      "categoryId": "26e6378e-2087-4770-bdd1-8a55544ca14a",
+      "featured": false,
+      "published": true,
+      "order": 91
+    },
+    {
+      "id": "f945cfcc-084e-467e-a1d9-674591ba1a29",
+      "name": "Daiquiri",
+      "description": "Daiquiri frozen de fruta (mango o maracuyá)",
+      "price": 210,
+      "categoryId": "26e6378e-2087-4770-bdd1-8a55544ca14a",
+      "featured": false,
+      "published": true,
+      "order": 92
+    },
+    {
+      "id": "8d195e32-39e5-40d8-a553-7c9dc5853088",
+      "name": "Caipiroska",
+      "description": "Trago tradicional con vodka y lima fresca",
+      "price": 220,
+      "categoryId": "26e6378e-2087-4770-bdd1-8a55544ca14a",
+      "featured": false,
+      "published": true,
+      "order": 93
+    },
+    {
+      "id": "208c62c2-c1fc-45ab-a7d6-dff4447cdb1a",
+      "name": "Bodega Brisas (750 ml)",
+      "description": "Selección de la casa: Tannat Merlot, Rose o Blanc de Blancs",
+      "price": 420,
+      "categoryId": "08be6e8f-f7f9-43a8-99d4-9410696eab6d",
+      "featured": false,
+      "published": true,
+      "order": 94
+    },
+    {
+      "id": "500a2ee6-59b2-40ae-9a4a-23a3751ccee5",
+      "name": "Bodega Luigi Bosca (750 ml)",
+      "description": "Línea La Linda: Tinto Malbec, Rose de Malbec o Blanco Chardonnay",
+      "price": 720,
+      "categoryId": "08be6e8f-f7f9-43a8-99d4-9410696eab6d",
+      "featured": false,
+      "published": true,
+      "order": 95
+    }
+  ]
+}

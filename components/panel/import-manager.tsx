@@ -9,7 +9,12 @@ import {
   UploadCloud,
   X,
 } from "lucide-react";
-import { importMenuItems, type ImportResult } from "@/app/panel/actions";
+import {
+  exportMenu,
+  importMenuItems,
+  importMenuJson,
+  type ImportResult,
+} from "@/app/panel/actions";
 import { formatPrice } from "@/lib/format";
 
 interface ParsedRow {
@@ -105,6 +110,17 @@ export function ImportManager() {
   async function handleFile(file: File) {
     reset();
     setFileName(file.name);
+
+    // A .json file replaces the whole store — no preview table.
+    if (/\.json$/i.test(file.name)) {
+      const text = await file.text();
+      startTransition(async () => {
+        const res = await importMenuJson(text);
+        setResult(res);
+      });
+      return;
+    }
+
     setParsing(true);
     try {
       const XLSX = await import("xlsx");
@@ -173,6 +189,21 @@ export function ImportManager() {
     }
   }
 
+  function exportJson() {
+    startTransition(async () => {
+      const json = await exportMenu();
+      if (!json) return;
+      const url = URL.createObjectURL(
+        new Blob([json], { type: "application/json" }),
+      );
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "menu.json";
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+  }
+
   function downloadTemplate() {
     import("xlsx").then((XLSX) => {
       const ws = XLSX.utils.aoa_to_sheet([
@@ -210,23 +241,69 @@ export function ImportManager() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h2 className="font-display text-lg text-bone">Importar desde Excel</h2>
+          <h2 className="font-display text-lg text-bone">Importar / exportar</h2>
           <p className="mt-1 text-sm text-stone-400">
-            Subí un archivo <code className="text-stone-300">.xlsx</code>,{" "}
+            Subí <code className="text-stone-300">.xlsx</code>,{" "}
             <code className="text-stone-300">.xls</code> o{" "}
-            <code className="text-stone-300">.csv</code> con columnas{" "}
-            <em>nombre, descripción, precio, categoría</em>. Las categorías nuevas
-            se crean solas.
+            <code className="text-stone-300">.csv</code> (columnas{" "}
+            <em>nombre, descripción, precio, categoría</em>) para agregar platos, o
+            un <code className="text-stone-300">.json</code> para reemplazar la
+            carta completa.
           </p>
         </div>
-        <button
-          type="button"
-          onClick={downloadTemplate}
-          className="inline-flex items-center gap-2 rounded-full border border-stone-700 px-4 py-2 text-sm text-bone hover:border-neon hover:text-neon"
-        >
-          <Download className="h-4 w-4" />
-          Descargar plantilla
-        </button>
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={exportJson}
+            disabled={pending}
+            className="inline-flex items-center gap-2 rounded-full border border-stone-700 px-4 py-2 text-sm text-bone hover:border-neon hover:text-neon disabled:opacity-50"
+          >
+            <Download className="h-4 w-4" />
+            Exportar carta (.json)
+          </button>
+          <button
+            type="button"
+            onClick={downloadTemplate}
+            className="inline-flex items-center gap-2 rounded-full border border-stone-700 px-4 py-2 text-sm text-bone hover:border-neon hover:text-neon"
+          >
+            <Download className="h-4 w-4" />
+            Plantilla .xlsx
+          </button>
+        </div>
+      </div>
+
+      <div className="rounded-xl border border-stone-800 bg-stone-900/40 p-4">
+        <p className="mb-2 font-mono text-[0.7rem] uppercase tracking-[0.15em] text-stone-500">
+          Columnas de la planilla
+        </p>
+        <ul className="space-y-1.5 text-sm">
+          {[
+            { col: "nombre", req: true, hint: "también: name, plato, item" },
+            { col: "precio", req: true, hint: "número, también: price, valor" },
+            { col: "categoria", req: true, hint: "también: category, rubro, sección" },
+            { col: "descripcion", req: false, hint: "opcional — también: description, detalle" },
+            { col: "destacado", req: false, hint: "opcional — sí / no (portada)" },
+            { col: "publicado", req: false, hint: "opcional — sí / no (por defecto: sí)" },
+          ].map((c) => (
+            <li key={c.col} className="flex flex-wrap items-baseline gap-x-2">
+              <code className="rounded bg-stone-800 px-1.5 py-0.5 text-xs text-bone">
+                {c.col}
+              </code>
+              <span
+                className={
+                  c.req ? "text-xs text-neon" : "text-xs text-stone-500"
+                }
+              >
+                {c.req ? "obligatoria" : "opcional"}
+              </span>
+              <span className="text-xs text-stone-500">— {c.hint}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-2 text-xs text-stone-500">
+          La primera fila son los encabezados. Mayúsculas, acentos y textos como
+          &laquo;Precio ($U)&raquo; se reconocen igual.
+        </p>
       </div>
 
       {result?.ok ? (
@@ -276,7 +353,7 @@ export function ImportManager() {
           <input
             ref={inputRef}
             type="file"
-            accept=".xlsx,.xls,.csv"
+            accept=".xlsx,.xls,.csv,.json"
             className="sr-only"
             onChange={(e) => {
               const file = e.target.files?.[0];
@@ -297,7 +374,7 @@ export function ImportManager() {
                 Arrastrá el archivo acá, o{" "}
                 <span className="text-neon">elegí uno</span>
               </p>
-              <p className="text-xs text-stone-500">.xlsx · .xls · .csv</p>
+              <p className="text-xs text-stone-500">.xlsx · .xls · .csv · .json</p>
             </>
           )}
           {parseError ? (

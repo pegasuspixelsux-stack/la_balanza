@@ -1,8 +1,8 @@
 import "server-only";
 import { randomUUID } from "node:crypto";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
+import os from "node:os";
 import path from "node:path";
-import { Redis } from "@upstash/redis";
 import type {
   FeaturedItem,
   MenuCategory,
@@ -14,22 +14,20 @@ import type {
 import { seedMenu } from "./menu-seed";
 
 /**
- * Two storage backends:
- *  - Upstash Redis when `UPSTASH_REDIS_REST_URL` / `KV_REST_API_URL` are set
- *    (production on Vercel, where the filesystem is read-only)
- *  - a local JSON file otherwise (`data/menu.json`, for local dev)
+ * Local JSON file storage — no external services.
+ *
+ *  - `data/menu.json` (committed to the repo) is the source of truth and is
+ *    always readable, including on Vercel.
+ *  - Writes go to `data/menu.json` locally. On Vercel the bundle is read-only,
+ *    so writes land in a temp file that the same warm instance reads back —
+ *    edits are live but not durable across cold starts. Use Exportar in the
+ *    panel to download the updated file and commit it for a permanent change.
  */
-const REDIS_KEY = "lb:menu:v1";
-const DATA_DIR = path.join(process.cwd(), "data");
-const DATA_FILE = path.join(DATA_DIR, "menu.json");
-
-const redis: Redis | null = (() => {
-  const url =
-    process.env.UPSTASH_REDIS_REST_URL ?? process.env.KV_REST_API_URL ?? "";
-  const token =
-    process.env.UPSTASH_REDIS_REST_TOKEN ?? process.env.KV_REST_API_TOKEN ?? "";
-  return url && token ? new Redis({ url, token }) : null;
-})();
+const IS_SERVERLESS = Boolean(process.env.VERCEL || process.env.AWS_REGION);
+const REPO_FILE = path.join(process.cwd(), "data", "menu.json");
+const RUNTIME_FILE = IS_SERVERLESS
+  ? path.join(os.tmpdir(), "la-balanza-menu.json")
+  : REPO_FILE;
 
 // Serialise read-modify-write cycles so concurrent Server Actions in the same
 // instance can't clobber each other.
@@ -45,38 +43,41 @@ function normalizeData(parsed: MenuData): MenuData {
   return parsed;
 }
 
-async function load(): Promise<MenuData> {
-  if (redis) {
-    const stored = await redis.get<MenuData>(REDIS_KEY);
-    if (stored?.categories && stored?.items) return normalizeData(stored);
-    await redis.set(REDIS_KEY, seedMenu);
-    return structuredClone(seedMenu);
-  }
-
+async function readFrom(file: string): Promise<MenuData | null> {
   try {
-    const raw = await readFile(DATA_FILE, "utf8");
-    const parsed = JSON.parse(raw) as MenuData;
-    if (!parsed.categories || !parsed.items) throw new Error("malformed");
+    const parsed = JSON.parse(await readFile(file, "utf8")) as MenuData;
+    if (!parsed.categories || !parsed.items) return null;
     return normalizeData(parsed);
   } catch {
-    // No file yet (or corrupt). Try to write the seed; on a read-only
-    // filesystem this fails — still serve the seed so reads work.
-    try {
-      await persist(seedMenu);
-    } catch {
-      /* read-only filesystem — writes unavailable in this environment */
-    }
-    return structuredClone(seedMenu);
+    return null;
   }
 }
 
-async function persist(data: MenuData): Promise<void> {
-  if (redis) {
-    await redis.set(REDIS_KEY, data);
-    return;
+async function load(): Promise<MenuData> {
+  // Prefer runtime writes, then the committed file, then the built-in seed.
+  const runtime = await readFrom(RUNTIME_FILE);
+  if (runtime) return runtime;
+
+  if (RUNTIME_FILE !== REPO_FILE) {
+    const repo = await readFrom(REPO_FILE);
+    if (repo) return repo;
   }
-  await mkdir(DATA_DIR, { recursive: true });
-  await writeFile(DATA_FILE, `${JSON.stringify(data, null, 2)}\n`, "utf8");
+
+  try {
+    await persist(seedMenu);
+  } catch {
+    /* read-only environment — reads still work from the seed */
+  }
+  return structuredClone(seedMenu);
+}
+
+async function persist(data: MenuData): Promise<void> {
+  await mkdir(path.dirname(RUNTIME_FILE), { recursive: true });
+  await writeFile(
+    RUNTIME_FILE,
+    `${JSON.stringify(data, null, 2)}\n`,
+    "utf8",
+  );
 }
 
 /** Run a mutation against the store with serialised access. */
@@ -95,6 +96,9 @@ function nextOrder(rows: { order: number }[]): number {
   return rows.reduce((max, row) => Math.max(max, row.order), 0) + 1;
 }
 
+/** True when this environment can persist writes durably (local dev). */
+export const storageIsDurable = !IS_SERVERLESS;
+
 /* ------------------------------------------------------------------ reads */
 
 /** Full data, including unpublished rows — for the admin panel. */
@@ -103,6 +107,27 @@ export async function getMenu(): Promise<MenuData> {
   data.categories.sort(byOrder);
   data.items.sort(byOrder);
   return data;
+}
+
+/** Pretty JSON of the whole store — for the Exportar button. */
+export async function exportMenu(): Promise<string> {
+  return `${JSON.stringify(await getMenu(), null, 2)}\n`;
+}
+
+/** Replace the entire store (JSON import). */
+export async function replaceMenu(next: {
+  settings?: Partial<SiteSettings>;
+  categories: MenuCategory[];
+  items: MenuItem[];
+}): Promise<void> {
+  await mutate((data) => {
+    data.settings = { ...seedMenu.settings, ...next.settings };
+    data.categories = next.categories.map((c, i) => ({
+      ...c,
+      order: c.order ?? i + 1,
+    }));
+    data.items = next.items.map((it, i) => ({ ...it, order: it.order ?? i + 1 }));
+  });
 }
 
 /** Contact + hours settings, editable from the panel. */
