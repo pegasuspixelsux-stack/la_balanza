@@ -13,10 +13,14 @@
   --color-neon-deep: #00d957;
   --color-warm: #ffaa33;
 
-  /* Terracotta — warm anchor, used for the footer */
+  /* Terracotta accent */
   --color-clay: #b1543c;
   --color-clay-deep: #8f4230;
   --color-clay-light: #c56a52;
+
+  /* Dark brown — the footer */
+  --color-cocoa: #2b1d15;
+  --color-cocoa-line: #4a3427;
 
   /* Legacy token names kept as aliases so existing markup remaps cleanly:
      - "terracotta" is now the neon-green accent
