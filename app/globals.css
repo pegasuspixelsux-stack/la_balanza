@@ -13,6 +13,11 @@
   --color-neon-deep: #00d957;
   --color-warm: #ffaa33;
 
+  /* Terracotta — warm anchor, used for the footer */
+  --color-clay: #b1543c;
+  --color-clay-deep: #8f4230;
+  --color-clay-light: #c56a52;
+
   /* Legacy token names kept as aliases so existing markup remaps cleanly:
      - "terracotta" is now the neon-green accent
      - "pine" is now forest green
