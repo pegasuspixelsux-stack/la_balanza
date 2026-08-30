@@ -21,6 +21,15 @@ function fail(error: string): ActionResult {
   return { ok: false, error };
 }
 
+/** Friendly message when a write fails (e.g. read-only FS with no Redis). */
+function storageError(error: unknown): string {
+  const msg = error instanceof Error ? error.message : String(error);
+  if (/EROFS|read-only|ENOENT|EACCES|permission denied/i.test(msg)) {
+    return "El almacenamiento es de solo lectura en este entorno. Conectá Upstash Redis (Vercel → Storage) para poder guardar cambios.";
+  }
+  return msg || "No se pudo guardar.";
+}
+
 /** Purge every surface that renders menu or settings data. */
 function revalidateEverything(): void {
   revalidatePath("/panel");
@@ -319,10 +328,14 @@ export async function importMenuItems(
     return { ok: false, error: "Máximo 500 platos por importación." };
   }
 
-  const { itemsCreated, categoriesCreated } = await store.importMenuItems(
-    parsed.data,
-    { replace: options?.replace === true },
-  );
-  revalidateEverything();
-  return { ok: true, itemsCreated, categoriesCreated };
+  try {
+    const { itemsCreated, categoriesCreated } = await store.importMenuItems(
+      parsed.data,
+      { replace: options?.replace === true },
+    );
+    revalidateEverything();
+    return { ok: true, itemsCreated, categoriesCreated };
+  } catch (error) {
+    return { ok: false, error: storageError(error) };
+  }
 }

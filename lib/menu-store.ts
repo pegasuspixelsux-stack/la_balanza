@@ -2,6 +2,7 @@ import "server-only";
 import { randomUUID } from "node:crypto";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
+import { Redis } from "@upstash/redis";
 import type {
   FeaturedItem,
   MenuCategory,
@@ -12,38 +13,68 @@ import type {
 } from "./menu-types";
 import { seedMenu } from "./menu-seed";
 
+/**
+ * Two storage backends:
+ *  - Upstash Redis when `UPSTASH_REDIS_REST_URL` / `KV_REST_API_URL` are set
+ *    (production on Vercel, where the filesystem is read-only)
+ *  - a local JSON file otherwise (`data/menu.json`, for local dev)
+ */
+const REDIS_KEY = "lb:menu:v1";
 const DATA_DIR = path.join(process.cwd(), "data");
 const DATA_FILE = path.join(DATA_DIR, "menu.json");
 
-// Serialise read-modify-write cycles so concurrent Server Actions can't clobber
-// each other's changes to the JSON file.
+const redis: Redis | null = (() => {
+  const url =
+    process.env.UPSTASH_REDIS_REST_URL ?? process.env.KV_REST_API_URL ?? "";
+  const token =
+    process.env.UPSTASH_REDIS_REST_TOKEN ?? process.env.KV_REST_API_TOKEN ?? "";
+  return url && token ? new Redis({ url, token }) : null;
+})();
+
+// Serialise read-modify-write cycles so concurrent Server Actions in the same
+// instance can't clobber each other.
 let writeQueue: Promise<unknown> = Promise.resolve();
 
 function byOrder<T extends { order: number }>(a: T, b: T): number {
   return a.order - b.order;
 }
 
+function normalizeData(parsed: MenuData): MenuData {
+  // Tolerate data written before `settings` existed.
+  parsed.settings = { ...seedMenu.settings, ...parsed.settings };
+  return parsed;
+}
+
 async function load(): Promise<MenuData> {
+  if (redis) {
+    const stored = await redis.get<MenuData>(REDIS_KEY);
+    if (stored?.categories && stored?.items) return normalizeData(stored);
+    await redis.set(REDIS_KEY, seedMenu);
+    return structuredClone(seedMenu);
+  }
+
   try {
     const raw = await readFile(DATA_FILE, "utf8");
     const parsed = JSON.parse(raw) as MenuData;
     if (!parsed.categories || !parsed.items) throw new Error("malformed");
-    // Tolerate files written before `settings` existed.
-    parsed.settings = { ...seedMenu.settings, ...parsed.settings };
-    return parsed;
+    return normalizeData(parsed);
   } catch {
     // No file yet (or corrupt). Try to write the seed; on a read-only
-    // filesystem (e.g. Vercel) that fails — still serve the seed so reads work.
+    // filesystem this fails — still serve the seed so reads work.
     try {
       await persist(seedMenu);
     } catch {
-      /* read-only filesystem — writes are unavailable in this environment */
+      /* read-only filesystem — writes unavailable in this environment */
     }
     return structuredClone(seedMenu);
   }
 }
 
 async function persist(data: MenuData): Promise<void> {
+  if (redis) {
+    await redis.set(REDIS_KEY, data);
+    return;
+  }
   await mkdir(DATA_DIR, { recursive: true });
   await writeFile(DATA_FILE, `${JSON.stringify(data, null, 2)}\n`, "utf8");
 }
