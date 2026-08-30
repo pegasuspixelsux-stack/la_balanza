@@ -4,7 +4,12 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
-import { SESSION_COOKIE, SESSION_MAX_AGE } from "@/lib/auth-constants";
+import {
+  SESSION_COOKIE,
+  SESSION_MAX_AGE,
+  adminPassword,
+  adminUser,
+} from "@/lib/auth-constants";
 import { createSessionToken, isAuthenticated } from "@/lib/auth";
 import * as store from "@/lib/menu-store";
 
@@ -33,14 +38,11 @@ export async function login(
   _prev: ActionResult | null,
   formData: FormData,
 ): Promise<ActionResult | null> {
+  const user = String(formData.get("user") ?? "").trim();
   const password = String(formData.get("password") ?? "");
-  const expected = process.env.ADMIN_PASSWORD;
 
-  if (!expected) {
-    return fail("Falta configurar ADMIN_PASSWORD en el servidor.");
-  }
-  if (password !== expected) {
-    return fail("Contraseña incorrecta.");
+  if (user.toLowerCase() !== adminUser().toLowerCase() || password !== adminPassword()) {
+    return fail("Usuario o contraseña incorrectos.");
   }
 
   const cookieStore = await cookies();

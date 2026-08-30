@@ -32,7 +32,13 @@ async function load(): Promise<MenuData> {
     parsed.settings = { ...seedMenu.settings, ...parsed.settings };
     return parsed;
   } catch {
-    await persist(seedMenu);
+    // No file yet (or corrupt). Try to write the seed; on a read-only
+    // filesystem (e.g. Vercel) that fails — still serve the seed so reads work.
+    try {
+      await persist(seedMenu);
+    } catch {
+      /* read-only filesystem — writes are unavailable in this environment */
+    }
     return structuredClone(seedMenu);
   }
 }
