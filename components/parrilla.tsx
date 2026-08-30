@@ -19,11 +19,11 @@ export function Parrilla() {
     <section id="parrilla" className="relative overflow-hidden border-y border-forest-deep/60 bg-forest/25">
       <div className="absolute inset-0 bg-[radial-gradient(90%_60%_at_80%_0%,rgba(0,255,102,0.1),transparent_65%)]" />
       <div className="relative mx-auto grid max-w-page gap-12 px-5 py-24 sm:px-8 sm:py-32 lg:grid-cols-2 lg:items-center lg:gap-16">
-        <Reveal className="order-2 overflow-hidden rounded-2xl border border-stone-800 lg:order-1">
+        <Reveal className="order-2 aspect-square overflow-hidden rounded-2xl border border-stone-800 lg:order-1">
           <Image
             src="/images/balanza-5.webp"
             alt="La parrilla encendida con la leña apilada debajo"
-            width={382}
+            width={510}
             height={510}
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="h-full w-full object-cover"
