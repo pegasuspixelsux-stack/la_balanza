@@ -31,7 +31,7 @@ const pacifico = Pacifico({
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
-  weight: ["800"],
+  weight: ["600"],
   display: "swap",
 });
 

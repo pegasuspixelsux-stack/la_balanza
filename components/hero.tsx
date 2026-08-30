@@ -80,9 +80,9 @@ export function Hero() {
           </motion.span>
           <motion.span
             variants={item}
-            className="mt-1 font-heading text-5xl font-extrabold leading-[0.9] tracking-tight text-bone sm:text-6xl lg:text-7xl md:mt-0"
+            className="mt-1 font-heading text-5xl font-semibold leading-[0.9] tracking-tight text-bone sm:text-6xl lg:text-7xl md:mt-0"
           >
-            La Balanza
+            la Balanza
           </motion.span>
         </h1>
 
