@@ -3,41 +3,52 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import type { FeaturedItem } from "@/lib/menu-types";
+import type { FeaturedItem, MenuCategoryWithItems } from "@/lib/menu-types";
 import { CategoryFilter } from "@/components/menu/category-filter";
 import { MenuCard } from "@/components/menu/menu-card";
 
-const ALL = "Todo";
+const ALL = "Destacados";
 
-export function FeaturedMenu({ items }: { items: FeaturedItem[] }) {
+interface FeaturedMenuProps {
+  featured: FeaturedItem[];
+  menu: MenuCategoryWithItems[];
+}
+
+export function FeaturedMenu({ featured, menu }: FeaturedMenuProps) {
   const [active, setActive] = useState(ALL);
 
-  const categoryNames = useMemo(
-    () => [...new Set(items.map((i) => i.categoryName).filter(Boolean))],
-    [items],
-  );
+  const categoryNames = useMemo(() => menu.map((c) => c.name), [menu]);
 
-  const visible =
-    active === ALL ? items : items.filter((i) => i.categoryName === active);
+  const visible = useMemo(() => {
+    if (active === ALL) {
+      return featured.map((item) => ({ item, eyebrow: item.categoryName }));
+    }
+    const category = menu.find((c) => c.name === active);
+    return (category?.items ?? []).map((item) => ({ item, eyebrow: active }));
+  }, [active, featured, menu]);
 
   return (
     <div>
-      {categoryNames.length > 1 ? (
-        <div className="mb-8">
-          <CategoryFilter
-            categories={categoryNames}
-            active={active}
-            onChange={setActive}
-            allLabel={ALL}
-          />
-        </div>
-      ) : null}
-
-      <div className="grid gap-4 sm:grid-cols-2">
-        {visible.map((item) => (
-          <MenuCard key={item.id} item={item} eyebrow={item.categoryName} />
-        ))}
+      <div className="mb-8">
+        <CategoryFilter
+          categories={categoryNames}
+          active={active}
+          onChange={setActive}
+          allLabel={ALL}
+        />
       </div>
+
+      {visible.length === 0 ? (
+        <p className="py-10 text-center text-sm text-stone-500">
+          No hay platos publicados en esta categoría.
+        </p>
+      ) : (
+        <div className="grid gap-4 sm:grid-cols-2">
+          {visible.map(({ item, eyebrow }) => (
+            <MenuCard key={item.id} item={item} eyebrow={eyebrow} />
+          ))}
+        </div>
+      )}
 
       <div className="mt-10 text-center">
         <Link
