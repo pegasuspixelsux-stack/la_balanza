@@ -156,7 +156,7 @@
       "description": "Milanesa de carne con salsa, jamón y muzzarella gratinada.",
       "price": 690,
       "categoryId": "cat-minutas",
-      "featured": false,
+      "featured": true,
       "published": true,
       "order": 6
     },
@@ -176,7 +176,7 @@
       "description": "Masa casera, gratinados al horno. Opción vegetariana.",
       "price": 440,
       "categoryId": "cat-pastas",
-      "featured": false,
+      "featured": true,
       "published": true,
       "order": 8
     },
@@ -226,7 +226,7 @@
       "description": "Receta de siempre, con abundante dulce de leche.",
       "price": 220,
       "categoryId": "cat-postres",
-      "featured": true,
+      "featured": false,
       "published": true,
       "order": 13
     },
@@ -296,7 +296,7 @@
       "description": "Filete tierno de merluza cocinado a la plancha",
       "price": 425,
       "categoryId": "315890ba-7a5a-469a-9f99-233d31bf1fde",
-      "featured": false,
+      "featured": true,
       "published": true,
       "order": 20
     },
@@ -306,7 +306,7 @@
       "description": "Milanesa de merluza crujiente con guarnición",
       "price": 450,
       "categoryId": "315890ba-7a5a-469a-9f99-233d31bf1fde",
-      "featured": false,
+      "featured": true,
       "published": true,
       "order": 21
     },
@@ -356,7 +356,7 @@
       "description": "Clásica con tomate, jamón, queso, panceta, huevo, mayonesa y papas",
       "price": 270,
       "categoryId": "3b1b2aaf-393c-4ca3-8540-fbdc5cafcf97",
-      "featured": false,
+      "featured": true,
       "published": true,
       "order": 26
     },
@@ -366,7 +366,7 @@
       "description": "Doble carne, jamón, huevo, panceta, cheddar, tomate y mayonesa con papas",
       "price": 440,
       "categoryId": "3b1b2aaf-393c-4ca3-8540-fbdc5cafcf97",
-      "featured": false,
+      "featured": true,
       "published": true,
       "order": 27
     },
@@ -736,7 +736,7 @@
       "description": "Puré artesanal a elección de calabaza o papa",
       "price": 210,
       "categoryId": "69f43107-ff8c-4f0c-aa09-8947210c2b71",
-      "featured": false,
+      "featured": true,
       "published": true,
       "order": 64
     },
@@ -746,7 +746,7 @@
       "description": "Tortilla clásica casera de verduras frescas",
       "price": 300,
       "categoryId": "69f43107-ff8c-4f0c-aa09-8947210c2b71",
-      "featured": false,
+      "featured": true,
       "published": true,
       "order": 65
     },
